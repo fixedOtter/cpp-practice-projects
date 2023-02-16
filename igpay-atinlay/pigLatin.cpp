@@ -37,7 +37,7 @@ string PigProcessor(string userWords) {
       
       // if it matches then
       if (userWords.at(i) == englishVowels.at(j)) {
-        pigOut = userWords.substr(i,) + userWords.substr(0,i) + "ay";
+        pigOut = userWords.substr(i,1) + userWords.substr(0,i) + "ay";
       }
 
     }
@@ -48,17 +48,24 @@ string PigProcessor(string userWords) {
 }
 
 /*
-  FIXME:
-  get input
+  GGNORE:
+  get input 
+  pass input to PigP
+  output PigP
+  TODO:
   user input validation (main? or wordhandler?)
     make sure there's no illegal characters
-  pass input to PigP
   process user input (in PigP or wordhandler?)
     break down string into vector of words?
     find word enders? (space, comma, period)
-  output PigP
 */
 int main() {
-  cout << "thingy finishe" << endl;
+  string userInput = "";
+  cout << "elcomeway otay ethay igpay atinlay anslatortray" << endl;
+  cout << "gib to me ur word pls" << endl;
+  getline(cin, userInput);
+
+
+  cout << PigProcessor(userInput) << endl;
   return 0;
 }
