@@ -23,6 +23,24 @@ using namespace std;
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+/*
+  ~~ TaskList ~~
+
+  GGNORE:
+  get input 
+  pass input to PigP
+  output PigP
+  process user input (in wordSeperator)
+  TODO:
+  user input validation (main? or wordhandler?)
+    make sure there's no illegal characters
+  update wordseperator to handle comma and period
+  move functions to their own documents??
+  FIXME:
+  not processing last word in vector
+  space between words as they are translated 
+*/
+
 string PigProcessor(const string userWords) {
   // first creating the vowel database so i can pull the first one or multiple characters
   vector<char> englishVowels{'a', 'e', 'i', 'o', 'u'};
@@ -104,24 +122,12 @@ string inputToPig(const string wordString) {
   for(int i = 0; i < vectorLength; i++) {
     // adds each word to finished piggy after running it through the 'lator
     finishedPiggy.append(PigProcessor(wordList.at(i)) + " ");
-    // cout << wordList.at(i);
+    cout << PigProcessor(wordList.at(i)) << endl;
   }
   
   return finishedPiggy;
 }
 
-/*
-  GGNORE:
-  get input 
-  pass input to PigP
-  output PigP
-  TODO:
-  user input validation (main? or wordhandler?)
-    make sure there's no illegal characters
-  process user input (in PigP or wordhandler?)
-    break down string into vector of words?
-    find word enders? (space, comma, period)
-*/
 int main() {
   string userInput = "";
   // would be cool if this was a normal string that was first converted with the PigProcessor
