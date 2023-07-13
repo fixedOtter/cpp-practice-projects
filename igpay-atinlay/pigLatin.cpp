@@ -65,6 +65,51 @@ string PigProcessor(const string userWords) {
   return pigOut;
 }
 
+// eventually expand this function out to wordSep.cpp??
+vector<string> wordSeperator(const string wordString) {
+  // first defining our output vector
+  vector<string> wordList;
+  // defining the length so no comparison crap
+  int stringLength = wordString.size();
+  // setting last space location
+  int lastSpace = 0;
+
+  // iterating through string to pull out all spaces and seperate the word from the big spaghetti
+  for (int i = 0; i < stringLength; i++) {
+    // setting character to compare to space
+    char spaceMaybe = wordString.at(i);
+    // comparing each character to space and then doing work
+    if (spaceMaybe == ' ') {
+      // grab word from the string
+      wordList.push_back(wordString.substr(lastSpace + 1,i - lastSpace));
+      // setting the last space position for the next word
+      lastSpace = i;
+    }
+  }
+
+  return wordList;
+}
+
+// func to take the vector from wordSeperator and run each word through the pigProcessor
+string inputToPig(const string wordString) {
+  // first defining our output string
+  string finishedPiggy;
+  // defining vector of the wordies 
+  vector<string> wordList = wordSeperator(wordString);
+  // define length so no comparison probs
+  int vectorLength = wordList.size();
+
+  
+  // loop to end all loops (going throu string and running pigProcessor and pushing to finishedPiggy)
+  for(int i = 0; i < vectorLength; i++) {
+    // adds each word to finished piggy after running it through the 'lator
+    finishedPiggy.append(PigProcessor(wordList.at(i)) + " ");
+    // cout << wordList.at(i);
+  }
+  
+  return finishedPiggy;
+}
+
 /*
   GGNORE:
   get input 
@@ -85,6 +130,6 @@ int main() {
   getline(cin, userInput);
 
 
-  cout << PigProcessor(userInput) << endl;
+  cout << inputToPig(userInput) << endl;
   return 0;
 }
