@@ -37,6 +37,7 @@ using namespace std;
   update wordseperator to handle comma and period
   move functions to their own documents??
   FIXME:
+  doesn't seem to work with just one word
   not processing last word in vector
   space between words as they are translated 
 */
