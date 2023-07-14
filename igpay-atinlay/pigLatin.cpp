@@ -118,13 +118,20 @@ string inputToPig(const string wordString) {
   // define length so no comparison probs
   int vectorLength = wordList.size();
 
-  
+  // fixedOtter's first iterator loop (for iterating through the vector of words from wordSeperator, and running PigProcessor on each word)
+  for (auto word : wordList) {
+    finishedPiggy.append(PigProcessor(word) + " ");
+  }
+  // seems like this loop is acting the same way in that somehow the last word still isn't being output to the console. 
+
+/*
   // loop to end all loops (going throu string and running pigProcessor and pushing to finishedPiggy)
   for(int i = 0; i < vectorLength; i++) {
     // adds each word to finished piggy after running it through the 'lator
     finishedPiggy.append(PigProcessor(wordList.at(i)) + " ");
     cout << PigProcessor(wordList.at(i)) << endl;
   }
+*/
   
   return finishedPiggy;
 }
