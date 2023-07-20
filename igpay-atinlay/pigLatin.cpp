@@ -100,9 +100,15 @@ vector<string> wordSeperator(const string wordString) {
     // comparing each character to space and then doing work
     if (spaceMaybe == ' ') {
       // grab word from the string
-      wordList.push_back(wordString.substr(lastSpace + 1,i - lastSpace));
+      wordList.push_back(wordString.substr(lastSpace,i - lastSpace));
       // setting the last space position for the next word
-      lastSpace = i;
+      lastSpace = i + 1;
+    // last word catch
+    } else if (i == stringLength - 1) {
+      //push last word to the vector
+      wordList.push_back(wordString.substr(lastSpace,i + 1 - lastSpace));
+      // lol
+      lastSpace = 0;
     }
   }
 
@@ -139,8 +145,8 @@ string inputToPig(const string wordString) {
 int main() {
   string userInput = "";
   // would be cool if this was a normal string that was first converted with the PigProcessor
-  cout << "elcomeway otay ethay igpay atinlay anslatortray" << endl;
-  cout << "gib to me ur word pls" << endl;
+  cout << inputToPig("welcome to the pig latin translator") << endl;
+  cout << "Please give me a phrase for me to translate to piglatin :)" << endl;
   getline(cin, userInput);
 
 
